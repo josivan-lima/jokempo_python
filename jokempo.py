@@ -62,11 +62,11 @@ while player !=4:
                                  
         for i in moves_rep: #Aplicação do ZeroR
             if i[0] == 1:
-                pesos[1] = i[1]/len(moves_player)*10
-            elif i[0] == 2:
-                pesos[2] = i[1]/len(moves_player)*10
-            elif i[0] == 3:
                 pesos[0] = i[1]/len(moves_player)*10
+            elif i[0] == 2:
+                pesos[1] = i[1]/len(moves_player)*10
+            elif i[0] == 3:
+                pesos[2] = i[1]/len(moves_player)*10
         #print (pesos)
         machine = random.choices([1, 2, 3], weights = pesos)
         machine = int(machine[0])
