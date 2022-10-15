@@ -86,8 +86,6 @@ while player !=4:
         #print (pesos)
         machine = random.choices([1, 2, 3], weights = pesos)
         machine = int(machine[0])
-        if player >= 5 or player <= 0:
-            print ('\nValor fora das opções!!!\n')
 
     rep = []
     moves_rep = []
