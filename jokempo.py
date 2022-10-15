@@ -36,13 +36,21 @@ def escolha_do_jogador_nao_for_valida(escolha: int) -> bool:
     return escolha not in escolhas_validas
 
 
-player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
-3 - Tesoura\n4 - Sair\n'))
+def perguntar_jogada_do_player() -> int:
+    mensagem_de_escolha = 'Escolha uma opção (1, 2, 3 ou 4)\n'\
+                          '1 - Pedra\n'\
+                          '2 - Papel\n'\
+                          '3 - Tesoura\n'\
+                          '4 - Sair\n'
+    escolha_do_player = int(input(mensagem_de_escolha))
+    return escolha_do_player
+    
+
+player = perguntar_jogada_do_player()
 
 while escolha_do_jogador_nao_for_valida(player):
     print ('\nValor fora das opções!!!\n')
-    player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
-3 - Tesoura\n4 - Sair\n'))
+    player = perguntar_jogada_do_player()
 
 machine = random.randint(1,3)
 
@@ -58,12 +66,10 @@ while player !=4:
     moves_player.append(player)
     mostrar_resultado(player, machine)
     print(machine)
-    player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
-3 - Tesoura\n4 - Sair\n'))
+    player = perguntar_jogada_do_player()
     while escolha_do_jogador_nao_for_valida(player):
         print ('\nValor fora das opções!!!\n')
-        player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
-3 - Tesoura\n4 - Sair\n'))
+        player = perguntar_jogada_do_player()
     if count >= 5:
         #print('JOGADAS ->', moves_player)
         for x in moves_player:
