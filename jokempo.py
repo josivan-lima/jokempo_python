@@ -105,9 +105,7 @@ def jokempo():
         moves_rep = []
         pesos = [1, 1, 1]
         
-            
-    if player == 4:
-        print('Até Logo!')
+    print('Até Logo!')
 
 
 if __name__ == '__main__':
