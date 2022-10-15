@@ -3,6 +3,8 @@ import random
 
 
 def mostrar_resultado(player:int, machine:int) -> None:
+    dict_jokempo = {1:'Pedra', 2:'Papel', 3:'Tesoura'}
+    
     resultado = {
     'empate': f'Sua jogada -> {dict_jokempo[player]}\n'
               f'Jogada da máquina -> {dict_jokempo[machine]}\n'
@@ -53,8 +55,6 @@ while escolha_do_jogador_nao_for_valida(player):
     player = perguntar_jogada_do_player()
 
 machine = random.randint(1,3)
-
-dict_jokempo = {1:'Pedra', 2:'Papel', 3:'Tesoura'}
 
 count = 0
 moves_player =[]
