@@ -62,10 +62,15 @@ def perguntar_jogada_do_player() -> int:
         print ('\nValor fora das opções!!!\n')
         escolha = input(mensagem_de_escolha)    
     return int(escolha)
-    
+
+
+def gerar_jogada_da_machine():
+    return random.randint(1,3)
+
+
 def jokempo():
     player = perguntar_jogada_do_player()
-    machine = random.randint(1,3)
+    machine = gerar_jogada_da_machine()
 
     count = 0
     moves_player =[]
@@ -76,7 +81,6 @@ def jokempo():
         count += 1
         moves_player.append(player)
         mostrar_resultado(player, machine)
-        print(machine)
         player = perguntar_jogada_do_player()
         if count >= 5:
             #print('JOGADAS ->', moves_player)
@@ -104,7 +108,7 @@ def jokempo():
         rep = []
         moves_rep = []
         pesos = [1, 1, 1]
-        
+
     print('Até Logo!')
 
 
