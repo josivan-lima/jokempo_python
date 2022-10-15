@@ -1,6 +1,36 @@
 import math
 import random
 
+
+def mostrar_resultado(player:int, machine:int) -> None:
+    resultado = {
+    'empate': f'Sua jogada -> {dict_jokempo[player]}\n'
+              f'Jogada da máquina -> {dict_jokempo[machine]}\n'
+              'Você empatou!\n',
+    'vitoria':f'Sua jogada -> {dict_jokempo[player]}\n'
+              f'Jogada da máquina -> {dict_jokempo[machine]}\n'
+              'Você ganhou!\n',
+    'derrota':f'Sua jogada -> {dict_jokempo[player]}\n'
+              f'Jogada da máquina -> {dict_jokempo[machine]}\n'
+              'Você perdeu!\n'
+              }
+    
+    if player == machine:
+        print(resultado['empate'])
+    elif player == 1 and machine == 3:
+        print(resultado['vitoria'])
+    elif player == 2 and machine == 1:
+        print(resultado['vitoria'])
+    elif player == 3 and machine == 2:
+        print(resultado['vitoria'])
+    elif player == 3 and machine == 1:
+        print(resultado['derrota'])
+    elif player == 1 and machine == 2:
+        print(resultado['derrota'])
+    elif player == 2 and machine == 3:
+        print(resultado['derrota'])
+    
+
 player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
 3 - Tesoura\n4 - Sair\n'))
 
@@ -21,27 +51,8 @@ pesos = [1, 1, 1]
 while player !=4:
     count += 1
     moves_player.append(player)
-    if player == machine:
-        print(f'Sua jogada -> {dict_jokempo[player]}\nJogada da máquina -> \
-{dict_jokempo[machine]}\nVocê empatou!\n')
-    elif player == 1 and machine == 3:
-        print(f'Sua jogada -> {dict_jokempo[player]}\nJogada da máquina -> \
-{dict_jokempo[machine]}\nVocê ganhou!\n')
-    elif player == 2 and machine == 1:
-        print(f'Sua jogada -> {dict_jokempo[player]}\nJogada da máquina -> \
-{dict_jokempo[machine]}\nVocê ganhou!\n')
-    elif player == 3 and machine == 2:
-        print(f'Sua jogada -> {dict_jokempo[player]}\nJogada da máquina -> \
-{dict_jokempo[machine]}\nVocê ganhou!\n')
-    elif player == 3 and machine == 1:
-        print(f'Sua jogada -> {dict_jokempo[player]}\nJogada da máquina -> \
-{dict_jokempo[machine]}\nVocê perdeu!\n')
-    elif player == 1 and machine == 2:
-        print(f'Sua jogada -> {dict_jokempo[player]}\nJogada da máquina -> \
-{dict_jokempo[machine]}\nVocê perdeu!\n')
-    elif player == 2 and machine == 3:
-        print(f'Sua jogada -> {dict_jokempo[player]}\nJogada da máquina -> \
-{dict_jokempo[machine]}\nVocê perdeu!\n')
+    mostrar_resultado(player, machine)
+    print(machine)
     player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
 3 - Tesoura\n4 - Sair\n'))
     if player >= 5 or player <= 0:
