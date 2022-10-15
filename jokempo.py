@@ -5,7 +5,7 @@ import random
 def mostrar_resultado(player:int, machine:int) -> None:
     dict_jokempo = {1:'Pedra', 2:'Papel', 3:'Tesoura'}
     
-    resultado = {
+    mensagem_de_resultado = {
     'empate': f'Sua jogada -> {dict_jokempo[player]}\n'
               f'Jogada da máquina -> {dict_jokempo[machine]}\n'
               'Você empatou!\n',
@@ -18,19 +18,19 @@ def mostrar_resultado(player:int, machine:int) -> None:
               }
     
     if player == machine:
-        print(resultado['empate'])
+        print(mensagem_de_resultado['empate'])
     elif player == 1 and machine == 3:
-        print(resultado['vitoria'])
+        print(mensagem_de_resultado['vitoria'])
     elif player == 2 and machine == 1:
-        print(resultado['vitoria'])
+        print(mensagem_de_resultado['vitoria'])
     elif player == 3 and machine == 2:
-        print(resultado['vitoria'])
+        print(mensagem_de_resultado['vitoria'])
     elif player == 3 and machine == 1:
-        print(resultado['derrota'])
+        print(mensagem_de_resultado['derrota'])
     elif player == 1 and machine == 2:
-        print(resultado['derrota'])
+        print(mensagem_de_resultado['derrota'])
     elif player == 2 and machine == 3:
-        print(resultado['derrota'])
+        print(mensagem_de_resultado['derrota'])
 
 
 def escolha_eh_int(escolha: str) -> bool:
