@@ -29,12 +29,17 @@ def mostrar_resultado(player:int, machine:int) -> None:
         print(resultado['derrota'])
     elif player == 2 and machine == 3:
         print(resultado['derrota'])
-    
+
+
+def escolha_do_jogador_nao_for_valida(escolha: int) -> bool:
+    escolhas_validas = [1,2,3,4] 
+    return escolha not in escolhas_validas
+
 
 player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
 3 - Tesoura\n4 - Sair\n'))
 
-while player >= 5 or player <= 0:
+while escolha_do_jogador_nao_for_valida(player):
     print ('\nValor fora das opções!!!\n')
     player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
 3 - Tesoura\n4 - Sair\n'))
@@ -55,7 +60,7 @@ while player !=4:
     print(machine)
     player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
 3 - Tesoura\n4 - Sair\n'))
-    if player >= 5 or player <= 0:
+    while escolha_do_jogador_nao_for_valida(player):
         print ('\nValor fora das opções!!!\n')
         player = int(input('Escolha uma opção (1, 2, 3 ou 4)\n1 - Pedra\n2 - Papel\n\
 3 - Tesoura\n4 - Sair\n'))
