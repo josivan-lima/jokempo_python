@@ -47,57 +47,60 @@ def perguntar_jogada_do_player() -> int:
     escolha_do_player = int(input(mensagem_de_escolha))
     return escolha_do_player
     
-
-player = perguntar_jogada_do_player()
-
-while escolha_do_jogador_nao_for_valida(player):
-    print ('\nValor fora das opções!!!\n')
+def jokempo():
     player = perguntar_jogada_do_player()
 
-machine = random.randint(1,3)
-
-count = 0
-moves_player =[]
-rep = []
-moves_rep = []
-pesos = [1, 1, 1]
-while player !=4:
-    count += 1
-    moves_player.append(player)
-    mostrar_resultado(player, machine)
-    print(machine)
-    player = perguntar_jogada_do_player()
     while escolha_do_jogador_nao_for_valida(player):
         print ('\nValor fora das opções!!!\n')
         player = perguntar_jogada_do_player()
-    if count >= 5:
-        #print('JOGADAS ->', moves_player)
-        for x in moves_player:
-            rep.append(moves_player.count(x))
-        #print (rep)
 
-        moves_max = max(rep)
-        for j in range(len(moves_player)):
-            if moves_max == rep[j]:
-                moves_rep.append([moves_player[j], rep[j]])
-        #print (moves_rep)
-                                 
-        for i in moves_rep: #Aplicação do ZeroR
-            if i[0] == 1:
-                pesos[1] = i[1]/len(moves_player)*10
-            elif i[0] == 2:
-                pesos[2] = i[1]/len(moves_player)*10
-            elif i[0] == 3:
-                pesos[0] = i[1]/len(moves_player)*10
-        #print (pesos)
-        machine = random.choices([1, 2, 3], weights = pesos)
-        machine = int(machine[0])
+    machine = random.randint(1,3)
 
+    count = 0
+    moves_player =[]
     rep = []
     moves_rep = []
     pesos = [1, 1, 1]
-    
-        
-if player == 4:
-    print('Até Logo!')
+    while player !=4:
+        count += 1
+        moves_player.append(player)
+        mostrar_resultado(player, machine)
+        print(machine)
+        player = perguntar_jogada_do_player()
+        while escolha_do_jogador_nao_for_valida(player):
+            print ('\nValor fora das opções!!!\n')
+            player = perguntar_jogada_do_player()
+        if count >= 5:
+            #print('JOGADAS ->', moves_player)
+            for x in moves_player:
+                rep.append(moves_player.count(x))
+            #print (rep)
 
+            moves_max = max(rep)
+            for j in range(len(moves_player)):
+                if moves_max == rep[j]:
+                    moves_rep.append([moves_player[j], rep[j]])
+            #print (moves_rep)
+                                    
+            for i in moves_rep: #Aplicação do ZeroR
+                if i[0] == 1:
+                    pesos[1] = i[1]/len(moves_player)*10
+                elif i[0] == 2:
+                    pesos[2] = i[1]/len(moves_player)*10
+                elif i[0] == 3:
+                    pesos[0] = i[1]/len(moves_player)*10
+            #print (pesos)
+            machine = random.choices([1, 2, 3], weights = pesos)
+            machine = int(machine[0])
+
+        rep = []
+        moves_rep = []
+        pesos = [1, 1, 1]
+        
+            
+    if player == 4:
+        print('Até Logo!')
+
+
+if __name__ == '__main__':
+    jokempo()
