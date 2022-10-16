@@ -25,7 +25,6 @@ class Machine:
             elif jogada == 3:
                 pesos[0] = zeror(self.contar_vezes_player_escolheu(3), self.total_jogadas_player())
 
-        print(f'pesos ->{pesos}')
         escolha_com_pesos = random.choices([1, 2, 3], weights = pesos)
         return int(escolha_com_pesos[0])
         
@@ -46,7 +45,6 @@ class Machine:
         for jogada, frequencia in enumerate(frequencia_jogadas, 1):
             if frequencia == maior_frequencia:
                 jogadas_mais_frequentes.append(jogada)
-        print(jogadas_mais_frequentes)
         return jogadas_mais_frequentes
 
 
