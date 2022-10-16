@@ -1,6 +1,60 @@
-import math
 import random
 import typing
+
+
+class Machine:
+
+    def __init__(self) -> None:
+        self.contador_rodadas : int = 0
+        self.jogadas_players : typing.List[str] = []
+
+    def gerar_jogada(self) -> int:
+        if self.contador_rodadas < 5:
+            return random.randint(1,3)
+        else:
+            return self.gerar_jogada_com_pesos()
+    
+    def gerar_jogada_com_pesos(self) -> int:
+        pesos = [1, 1, 1]
+        jogadas_mais_frequentes = self.jogada_player_mais_frequente()
+        for jogada in jogadas_mais_frequentes:
+            if jogada == 1:
+                pesos[1] = zeror(self.contar_vezes_player_escolheu(1), self.total_jogadas_player())
+            elif jogada == 2:
+                pesos[2] = zeror(self.contar_vezes_player_escolheu(2), self.total_jogadas_player())
+            elif jogada == 3:
+                pesos[0] = zeror(self.contar_vezes_player_escolheu(3), self.total_jogadas_player())
+
+        print(f'pesos ->{pesos}')
+        escolha_com_pesos = random.choices([1, 2, 3], weights = pesos)
+        return int(escolha_com_pesos[0])
+        
+    def total_jogadas_player(self) -> int:
+        return len(self.jogadas_players)
+
+    def contar_vezes_player_escolheu(self, jogada: int) -> int:
+        return self.jogadas_players.count(jogada)
+    
+    def jogada_player_mais_frequente(self) -> typing.List[int]:
+        frequencia_jogadas = [
+            self.contar_vezes_player_escolheu(1),
+            self.contar_vezes_player_escolheu(2),
+            self.contar_vezes_player_escolheu(3),
+        ]
+        maior_frequencia = max(frequencia_jogadas)
+        jogadas_mais_frequentes = []
+        for jogada, frequencia in enumerate(frequencia_jogadas, 1):
+            if frequencia == maior_frequencia:
+                jogadas_mais_frequentes.append(jogada)
+        print(jogadas_mais_frequentes)
+        return jogadas_mais_frequentes
+
+
+    def guardar_jogada_player(self, jogada: str) -> None:
+        self.jogadas_players.append(jogada)
+    
+    def adicionar_rodada(self) -> None:
+        self.contador_rodadas += 1
 
 
 def mostrar_resultado(player:int, machine:int) -> None:
@@ -68,60 +122,6 @@ def perguntar_jogada_do_player() -> int:
 def zeror(numero_jogadas: int, total_jogadas: int) -> float:
     return numero_jogadas/total_jogadas * 10 
 
-
-class Machine:
-
-    def __init__(self) -> None:
-        self.contador_rodadas : int = 0
-        self.jogadas_players : typing.List[str] = []
-
-    def gerar_jogada(self) -> int:
-        if self.contador_rodadas < 5:
-            return random.randint(1,3)
-        else:
-            return self.gerar_jogada_com_pesos()
-    
-    def gerar_jogada_com_pesos(self) -> int:
-        pesos = [1, 1, 1]
-        jogadas_mais_frequentes = self.jogada_player_mais_frequente()
-        for jogada in jogadas_mais_frequentes:
-            if jogada == 1:
-                pesos[1] = zeror(self.contar_vezes_player_escolheu(1), self.total_jogadas_player())
-            elif jogada == 2:
-                pesos[2] = zeror(self.contar_vezes_player_escolheu(2), self.total_jogadas_player())
-            elif jogada == 3:
-                pesos[0] = zeror(self.contar_vezes_player_escolheu(3), self.total_jogadas_player())
-
-        print(f'pesos ->{pesos}')
-        escolha_com_pesos = random.choices([1, 2, 3], weights = pesos)
-        return int(escolha_com_pesos[0])
-        
-    def total_jogadas_player(self) -> int:
-        return len(self.jogadas_players)
-
-    def contar_vezes_player_escolheu(self, jogada: int) -> int:
-        return self.jogadas_players.count(jogada)
-    
-    def jogada_player_mais_frequente(self) -> typing.List[int]:
-        frequencia_jogadas = [
-            self.contar_vezes_player_escolheu(1),
-            self.contar_vezes_player_escolheu(2),
-            self.contar_vezes_player_escolheu(3),
-        ]
-        maior_frequencia = max(frequencia_jogadas)
-        jogadas_mais_frequentes = []
-        for jogada, frequencia in enumerate(frequencia_jogadas, 1):
-            if frequencia == maior_frequencia:
-                jogadas_mais_frequentes.append(jogada)
-        print(jogadas_mais_frequentes)
-        return jogadas_mais_frequentes
-
-
-    def guardar_jogada_player(self, jogada: str) -> None:
-        self.jogadas_players.append(jogada)
-    
-    def adicionar_rodada(self) -> None:
-        self.contador_rodadas += 1
 
 def jokempo():
     machine = Machine()
