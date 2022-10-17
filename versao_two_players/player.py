@@ -3,7 +3,7 @@ from getpass import getpass
 
 class Player:
 
-    def __init__(self, nome) -> None:
+    def __init__(self, nome: str) -> None:
         self.nome = nome
     
     def jogar(self) -> int:
