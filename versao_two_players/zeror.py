@@ -1,7 +1,8 @@
 import random
+import typing
 
 
-def zeror(jogadas_do_player):
+def zeror(jogadas_do_player: typing.List[int]) -> int:
     pesos = [1, 1, 1]
     jogadas_mais_frequentes_player = get_jogadas_mais_frequentes_player(jogadas_do_player)
     for jogada, frequencia in jogadas_mais_frequentes_player.items():
@@ -15,20 +16,20 @@ def zeror(jogadas_do_player):
     jogada_otimizada = random.choices([1, 2, 3], weights = pesos)
     return int(jogada_otimizada[0])
 
-def total_jogadas_player(jogadas):
+def total_jogadas_player(jogadas: typing.List[int]) -> int:
     return len(jogadas)
 
-def funcao_zeror(numero_de_jogadas, total_de_jogadas):
+def funcao_zeror(numero_de_jogadas: int, total_de_jogadas: int) -> float:
     return numero_de_jogadas/total_de_jogadas * 10 
 
-def gerar_frequencia_de_jogadas(jogadas):
+def gerar_frequencia_de_jogadas(jogadas: typing.List[int]) -> typing.List[int]:
     return [
             contar_vezes_player_escolheu(1, jogadas),
             contar_vezes_player_escolheu(2, jogadas),
             contar_vezes_player_escolheu(3, jogadas),
         ]
 
-def get_jogadas_mais_frequentes_player(jogadas):
+def get_jogadas_mais_frequentes_player(jogadas: typing.List[int]) -> typing.Dict[int, int]:
     frequencia_jogadas = gerar_frequencia_de_jogadas(jogadas)
     maior_frequencia = max(frequencia_jogadas)
     jogadas_mais_frequentes = {}
@@ -37,5 +38,5 @@ def get_jogadas_mais_frequentes_player(jogadas):
             jogadas_mais_frequentes[jogada] = frequencia
     return jogadas_mais_frequentes
 
-def contar_vezes_player_escolheu(jogada, jogadas):
+def contar_vezes_player_escolheu(jogada: int, jogadas: typing.List[int]):
     return jogadas.count(jogada)
