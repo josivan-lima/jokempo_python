@@ -1,7 +1,7 @@
 from machine import Machine
 from player import Player
 
-def jogo():
+def jogo() -> None:
 
     formato_jogo = player_decide_formato_do_jogo()
     if formato_jogo == 2:
@@ -9,7 +9,7 @@ def jogo():
     else:
         jogo_one_player()
     
-def jogo_one_player():
+def jogo_one_player() -> None:
     p1 = Player('Player 1')
     machine = Machine()
 
@@ -20,7 +20,7 @@ def jogo_one_player():
         jogada_machine = machine.jogar()
         mostrar_resultado(jogada_player, jogada_machine)
 
-def jogo_two_players():
+def jogo_two_players() -> None:
     p1 = Player('Player 1')
     p2 = Player('Player 2')
 
@@ -31,12 +31,12 @@ def jogo_two_players():
         mostrar_resultado(jogada_player1, jogada_player2, two_players=True)
 
 
-def player_decide_formato_do_jogo():
+def player_decide_formato_do_jogo() -> int:
     decisao_jogador = escolher_formato_jogo()
     return validar_formato_do_jogo(decisao_jogador)
 
 
-def escolher_formato_jogo():
+def escolher_formato_jogo() -> str:
     return input('Decidir formato do jogo (1-One Player, 2-Two Players): ')
 
 
@@ -52,7 +52,7 @@ def formato_de_jogo_nao_eh_valido(formato:str) -> bool:
     return not formato.strip() in formatos_validos
 
 
-def mostrar_resultado(jogada_player1, jogada_player2, two_players=False):
+def mostrar_resultado(jogada_player1: int, jogada_player2: int, two_players: bool=False):
     dict_jokempo = {
         1: 'Pedra',
         2: 'Papel',
